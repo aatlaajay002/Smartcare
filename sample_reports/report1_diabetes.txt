@@ -1,0 +1,6 @@
+Patient: Ravi Kumar, 52 M
+Diagnosis: Type 2 Diabetes Mellitus with Hypertension.
+Rx:
+1. Tab. Metformin 500mg BD after food
+2. Tab. Amlodipine 5mg OD in the morning
+Advice: Avoid sugar and fried food. Exercise 30 minutes daily. Reduce salt intake. Review after 4 weeks with HbA1c report.

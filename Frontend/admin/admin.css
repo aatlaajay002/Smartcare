@@ -1,0 +1,46 @@
+.adminbody{background:#f4f5fd}
+.gate{display:grid;place-items:center;height:100vh;color:var(--muted)}
+.adm{display:flex;min-height:100vh}
+.side{width:240px;background:linear-gradient(180deg,#0f172a,#1e1b4b);color:#fff;padding:22px 16px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.role-pill{display:inline-block;margin:14px 0 22px;font-size:.68rem;letter-spacing:.12em;font-weight:700;color:#a5b4fc;background:rgba(165,180,252,.16);padding:4px 10px;border-radius:99px;align-self:flex-start}
+#sideNav{display:flex;flex-direction:column;gap:4px;flex:1}
+#sideNav a{padding:10px 14px;border-radius:10px;cursor:pointer;color:#c7d2fe;font-weight:500}
+#sideNav a:hover{background:rgba(255,255,255,.08)}#sideNav a.active{background:#4f46e5;color:#fff}
+.side-foot{border-top:1px solid rgba(255,255,255,.15);padding-top:14px}.who{font-size:.9rem;margin-bottom:10px;opacity:.9;word-break:break-all}
+.side .btn.outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.5);width:100%}
+.content{flex:1;padding:26px 32px 50px;min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.topbar h1{margin:0;font-size:1.6rem}.topright{display:flex;align-items:center;gap:14px}
+.stats.five{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));display:grid;gap:14px;margin-bottom:16px}
+.stat.acc b{color:var(--primary-d)}.stat.bad b{color:#b45309}
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.card h3{margin:0 0 14px;font-size:1.02rem}
+.vbars{display:flex;align-items:flex-end;gap:10px;height:170px}
+.vbar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:.78rem;color:var(--muted)}
+.vbar i{display:block;width:100%;max-width:44px;background:var(--primary);border-radius:6px 6px 0 0;min-height:3px}
+.vbar b{color:var(--text);margin-bottom:4px}
+.hrow{display:grid;grid-template-columns:130px 1fr 28px;gap:10px;align-items:center;font-size:.88rem;margin:7px 0}
+.hrow .track{background:#e4e8f7;border-radius:99px;height:10px;overflow:hidden}.hrow .track div{height:100%;background:#7c3aed}
+.usage{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.usage div{background:#eef2ff;border-radius:10px;padding:12px;text-align:center}.usage b{display:block;font-size:1.5rem;color:var(--primary-d)}.usage span{font-size:.78rem;color:var(--muted)}
+.act{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:.88rem}.act:last-child{border:0}
+.act small{color:var(--muted);white-space:nowrap}
+.empty{color:var(--muted);padding:10px 0}
+.tbl-wrap{overflow-x:auto}
+.daypick{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px}.daypick label{margin:0!important;font-weight:500!important;border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer;display:flex;gap:5px;align-items:center}
+.daypick input{width:auto;margin:0}
+.two-inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.icon-btn{margin-right:6px}
+.badge.Admin{background:#ede9fe;color:#6d28d9}
+@media(max-width:800px){.adm{flex-direction:column}.side{width:100%;height:auto;position:static}#sideNav{flex-direction:row;flex-wrap:wrap}.content{padding:18px}}
+
+/* v3: full-width sidebar, hover effects */
+.side{padding:22px 0}.side .brand{padding:0 24px}.role-pill{margin:14px 0 18px 24px}
+#sideNav{gap:0}
+#sideNav a{padding:14px 24px;border-radius:0;border-left:4px solid transparent;transition:background .2s,padding .2s}
+#sideNav a:hover{background:rgba(255,255,255,.09);padding-left:30px;color:#fff}
+#sideNav a.active{background:linear-gradient(90deg,rgba(124,58,237,.6),rgba(79,70,229,.12));border-left-color:#a5b4fc;color:#fff;font-weight:600}
+.side-foot{padding:16px 24px 0}
+.vbar i{background:linear-gradient(180deg,#7c3aed,#4f46e5);transition:height .6s ease}
+.content > .sec{animation:fadeUp .35s ease both}
+@media(max-width:800px){#sideNav a{padding:10px 14px;border-left:0}.side .brand{padding:0 6px}.role-pill{margin-left:6px}.side-foot{padding:12px 6px 0}}

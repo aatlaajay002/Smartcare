@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartCare - Admin Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="adminbody">
+  <div id="gate" class="gate">Checking admin access...</div>
+
+  <div id="adm" class="adm hidden">
+    <aside class="side">
+      <div class="brand light"><span class="logo">+</span> SmartCare</div>
+      <div class="role-pill">ADMIN PORTAL</div>
+      <nav id="sideNav">
+        <a data-sec="overview" class="active">Overview</a>
+        <a data-sec="appointments">Appointments</a>
+        <a data-sec="doctors">Doctors</a>
+        <a data-sec="patients">Patients</a>
+        <a data-sec="activity">Activity Log</a>
+      </nav>
+      <div class="side-foot">
+        <div id="adminName" class="who"></div>
+        <button class="btn small outline" id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+    <section class="content">
+      <header class="topbar">
+        <h1 id="secTitle">Overview</h1>
+        <div class="topright"><span id="sysInfo" class="muted"></span><button class="btn small outline" id="refreshBtn">Refresh</button></div>
+      </header>
+
+      <!-- OVERVIEW -->
+      <div id="sec-overview" class="sec">
+        <div class="stats five" id="statCards"></div>
+        <div class="two-col">
+          <div class="card"><h3>Appointments - next 7 days</h3><div id="chart7" class="vbars"></div></div>
+          <div class="card"><h3>Bookings by specialization</h3><div id="chartSpec"></div></div>
+        </div>
+        <div class="two-col">
+          <div class="card"><h3>AI feature usage</h3><div id="aiUsage" class="usage"></div></div>
+          <div class="card"><h3>Recent activity</h3><div id="recentAct"></div></div>
+        </div>
+      </div>
+
+      <!-- APPOINTMENTS -->
+      <div id="sec-appointments" class="sec hidden">
+        <div class="toolbar"><input id="apSearch" placeholder="Search patient, doctor or specialization..."><select id="apStatus"><option value="">All statuses</option><option>Booked</option><option>Cancelled</option></select></div>
+        <div id="apTable"></div>
+      </div>
+
+      <!-- DOCTORS -->
+      <div id="sec-doctors" class="sec hidden">
+        <div class="toolbar"><input id="dcSearch" placeholder="Search doctors..."><button class="btn" id="addDoctor" style="margin:0">+ Add Doctor</button></div>
+        <div id="dcTable"></div>
+      </div>
+
+      <!-- PATIENTS -->
+      <div id="sec-patients" class="sec hidden">
+        <div class="toolbar"><input id="ptSearch" placeholder="Search patients by name or email..."></div>
+        <div id="ptTable"></div>
+      </div>
+
+      <!-- ACTIVITY -->
+      <div id="sec-activity" class="sec hidden">
+        <p class="muted">Latest 100 events. Report text and chat messages are never stored - only the type of action.</p>
+        <div id="acTable"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- DOCTOR MODAL -->
+  <div class="modal hidden" id="docModal">
+    <div class="modal-box">
+      <button class="close" data-close>&times;</button>
+      <h3 id="docModalTitle">Add doctor</h3>
+      <label>Name<input id="fName" placeholder="Dr. Full Name"></label>
+      <label>Specialization<input id="fSpec" list="specList" placeholder="e.g. Cardiologist"><datalist id="specList"></datalist></label>
+      <div class="two-inputs">
+        <label>Experience (years)<input id="fExp" type="number" min="0" max="60"></label>
+        <label>Fee (&#8377;)<input id="fFee" type="number" min="0"></label>
+      </div>
+      <label>Available days</label>
+      <div id="fDays" class="daypick"></div>
+      <div class="two-inputs">
+        <label>Start time<input id="fStart" type="time" value="09:00"></label>
+        <label>End time<input id="fEnd" type="time" value="13:00"></label>
+      </div>
+      <p id="docError" class="error"></p>
+      <button class="btn full" id="docSave">Save</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "test_accuracy": 0.9512,
+  "macro_f1": 0.9511,
+  "cv_mean": 0.9412,
+  "cv_std": 0.0077,
+  "n_samples": 4200,
+  "classes": [
+    "Cardiologist",
+    "Dermatologist",
+    "ENT Specialist",
+    "Endocrinologist",
+    "Gastroenterologist",
+    "General Physician",
+    "Gynecologist",
+    "Neurologist",
+    "Ophthalmologist",
+    "Orthopedic",
+    "Pediatrician",
+    "Psychiatrist",
+    "Pulmonologist",
+    "Urologist"
+  ]
+}

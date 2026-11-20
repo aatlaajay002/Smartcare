@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartCare - AI Healthcare Appointment System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================= LOGIN / REGISTER (first screen) ================= -->
+  <div id="authScreen" class="hidden">
+    <div class="auth-left">
+      <div class="brand light"><span class="logo">+</span> SmartCare</div>
+      <h1>Your health,<br>made simpler.</h1>
+      <p>Book doctor appointments, get AI-powered doctor recommendations and understand your medical reports in plain language.</p>
+      <ul>
+        <li>Find doctors &amp; book slots in seconds</li>
+        <li>AI Symptom Checker (Machine Learning)</li>
+        <li>Medical Report Explainer (Generative AI)</li>
+      </ul>
+    </div>
+    <div class="auth-right">
+      <div class="auth-card">
+        <h2 id="authTitle">Welcome back</h2>
+        <p class="muted" id="authSub">Please log in to continue</p>
+        <div class="tabs"><a id="tabLogin" class="active">Login</a><a id="tabRegister">Register</a></div>
+        <form id="authForm" autocomplete="on">
+          <div id="regOnly" class="hidden">
+            <label>Full name<input id="aName" placeholder="Your full name"></label>
+            <label>Phone number<input id="aPhone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number"></label>
+          </div>
+          <label>Email<input id="aEmail" type="email" required placeholder="you@example.com"></label>
+          <label>Password<input id="aPass" type="password" required minlength="6" placeholder="At least 6 characters"></label>
+          <p id="authError" class="error"></p>
+          <button class="btn full" id="authSubmit" type="submit">Login</button>
+        </form>
+        <p class="muted small-note" id="authSwitch"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN WEBSITE (after login) ================= -->
+  <div id="appShell" class="hidden">
+    <aside class="sidebar">
+      <div class="brand light"><span class="logo">+</span> SmartCare</div>
+      <div class="role-pill">PATIENT PORTAL</div>
+      <nav id="menu">
+        <a data-page="home" class="active">Home</a>
+        <a data-page="doctors">Doctors</a>
+        <a data-page="dashboard">Patient Dashboard</a>
+        <a data-page="symptoms">Symptom Checker</a>
+        <a data-page="assistant">AI Health Assistant</a>
+        <a data-page="report">Report Explainer</a>
+        <a data-page="history">Appointments</a>
+      </nav>
+      <div id="userArea" class="side-user"></div>
+    </aside>
+    <div class="maincol">
+    <main>
+      <!-- HOME -->
+      <section id="page-home" class="page">
+        <div class="hero homehero">
+          <div class="eyebrow">SMARTCARE &middot; SMART HEALTHCARE SYSTEM</div>
+          <h1 id="homeGreeting">Your health, made simpler.</h1>
+          <p>Find doctors, view their available days and consultation hours, book appointments and use AI-assisted healthcare tools from one place.</p>
+          <div class="hero-actions">
+            <button class="btn white" data-go="doctors">Find a Doctor</button>
+            <button class="btn ghost" data-go="assistant">Ask AI Health Assistant</button>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b id="statDocs">-</b><span>Doctors listed</span></div>
+          <div class="stat"><b id="statSpecs">-</b><span>Specializations</span></div>
+          <div class="stat"><b>30 min</b><span>Appointment slots</span></div>
+        </div>
+        <div class="feature-grid">
+          <div class="card feature" data-go="doctors"><h3>Book an Appointment</h3><p>Browse doctors by specialization, pick a date and a free time slot.</p></div>
+          <div class="card feature" data-go="dashboard"><h3>Patient Dashboard</h3><p>Your upcoming visit, totals and quick actions in one place.</p></div>
+          <div class="card feature" data-go="assistant"><h3>AI Health Assistant <span class="tag">GenAI + ML</span></h3><p>Ask health questions and get safe, simple guidance and a doctor suggestion.</p></div>
+          <div class="card feature" data-go="symptoms"><h3>AI Symptom Checker <span class="tag">ML</span></h3><p>Describe your symptoms and get the right type of doctor recommended.</p></div>
+          <div class="card feature" data-go="report"><h3>Report Explainer <span class="tag">GenAI</span></h3><p>Paste or upload a prescription and read it in simple words.</p></div>
+          <div class="card feature" data-go="history"><h3>My Appointments</h3><p>See your booking history and cancel an appointment if plans change.</p></div>
+        </div>
+      </section>
+
+      <!-- DOCTORS -->
+      <section id="page-doctors" class="page hidden">
+        <h2>Doctors &amp; availability</h2>
+        <p class="muted">Search doctors, check their available days and consultation hours, and book an appointment.</p>
+        <div class="toolbar">
+          <input id="docSearch" placeholder="Search by doctor name or specialization...">
+          <select id="docSpec"><option value="">All specializations</option></select>
+        </div>
+        <div id="doctorList" class="grid"></div>
+      </section>
+
+      <!-- PATIENT DASHBOARD -->
+      <section id="page-dashboard" class="page hidden">
+        <h2>Patient Dashboard</h2>
+        <p class="muted">A quick overview of your appointments.</p>
+        <div class="stats four">
+          <div class="stat"><b id="dTotal">-</b><span>Total appointments</span></div>
+          <div class="stat"><b id="dUpcoming">-</b><span>Upcoming</span></div>
+          <div class="stat"><b id="dDone">-</b><span>Completed</span></div>
+          <div class="stat"><b id="dCancelled">-</b><span>Cancelled</span></div>
+        </div>
+        <div id="dNext"></div>
+        <div class="hero-actions dark"><button class="btn" data-go="doctors">Book new appointment</button>
+          <button class="btn outline" data-go="symptoms">Check symptoms</button>
+          <button class="btn outline" data-go="assistant">Ask AI assistant</button></div>
+      </section>
+
+      <!-- AI HEALTH ASSISTANT -->
+      <section id="page-assistant" class="page hidden">
+        <h2>AI Health Assistant <span class="tag">Generative AI + ML</span></h2>
+        <p class="muted">Ask a health question or describe your symptoms. I give general guidance and suggest the right doctor. I do not diagnose.</p>
+        <div class="card chat">
+          <div id="chatBox" class="chatbox"></div>
+          <div class="chips" id="chatExamples">
+            <span class="chip">I have a headache and sensitivity to light</span>
+            <span class="chip">What can I do for acidity?</span>
+            <span class="chip">My child has fever and cough</span>
+          </div>
+          <div class="chat-input"><input id="chatInput" maxlength="600" placeholder="Type your question..."><button class="btn" id="chatSend">Send</button></div>
+        </div>
+      </section>
+
+      <!-- SYMPTOM CHECKER (ML) -->
+      <section id="page-symptoms" class="page hidden">
+        <h2>AI Symptom Checker <span class="tag">Machine Learning</span></h2>
+        <p class="muted">Describe how you feel. Our Logistic Regression model predicts which type of doctor you should see.</p>
+        <div class="card">
+          <textarea id="symptomInput" rows="3" placeholder="e.g. I have chest pain, palpitations and feel dizzy"></textarea>
+          <div class="chips" id="examples">
+            <span class="chip">chest pain and palpitations</span>
+            <span class="chip">itchy skin rash with red patches</span>
+            <span class="chip">knee pain and swollen joints</span>
+            <span class="chip">excessive thirst and frequent urination</span>
+            <span class="chip">sore throat and blocked nose</span>
+            <span class="chip">child has fever and cough</span>
+          </div>
+          <button class="btn" id="predictBtn">Recommend Doctor</button>
+        </div>
+        <div id="predictResult"></div>
+      </section>
+
+      <!-- REPORT EXPLAINER (GenAI) -->
+      <section id="page-report" class="page hidden">
+        <h2>Medical Report Explainer <span class="tag">Generative AI</span></h2>
+        <p class="muted">Paste your diagnosis / prescription or upload a file (.txt, .pdf, .docx). We explain it in simple words.</p>
+        <div class="card">
+          <textarea id="reportText" rows="5" placeholder="e.g. Type 2 Diabetes. Metformin 500mg twice daily. Avoid sugar. Regular exercise."></textarea>
+          <div class="row">
+            <label class="filebtn">Upload report file <input type="file" id="reportFile" accept=".txt,.pdf,.docx"></label>
+            <span id="fileName" class="muted"></span>
+          </div>
+          <button class="btn" id="summarizeBtn">Explain in Simple Words</button>
+        </div>
+        <div id="reportResult"></div>
+      </section>
+
+      <!-- HISTORY -->
+      <section id="page-history" class="page hidden">
+        <h2>My Appointments</h2>
+        <div id="historyList"></div>
+      </section>
+    </main>
+
+    <footer>For information only - this tool does not replace professional medical advice, diagnosis or treatment.</footer>
+  </div>
+
+  <!-- ================= BOOKING MODAL ================= -->
+  <div class="modal hidden" id="bookModal">
+    <div class="modal-box">
+      <button class="close" data-close>&times;</button>
+      <h3 id="bookTitle">Book appointment</h3>
+      <p id="bookInfo" class="muted"></p>
+      <label>Date<input type="date" id="bookDate"></label>
+      <div id="slotBox"><p class="muted">Select a date to see available time slots.</p></div>
+      <label>Reason for visit (optional)<input id="bookReason" maxlength="200" placeholder="e.g. chest pain since 2 days"></label>
+      <p id="bookError" class="error"></p>
+      <button class="btn full" id="bookConfirm" disabled>Confirm Appointment</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
